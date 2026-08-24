@@ -1,0 +1,103 @@
+{
+  "sources": {
+    "terminal_demand": {
+      "url": "https://www.jemena.com.au/contentassets/c5a8f830c0e64bc5a5496b7f69899e0d/2025-victorian-terminal-station-demand-forecasts.xlsx",
+      "landing_page": "https://www.jemena.com.au/electricity/jemena-electricity-network/network-information/network-planning/",
+      "cache_file": "terminal_station_demand_forecasts_2025.xlsx",
+      "header_row": 4,
+      "unit": "MW",
+      "included_location_types": [
+        "Entire"
+      ],
+      "measures": [
+        {
+          "id": "summer",
+          "label": "Summer 2025 maximum",
+          "short_label": "Summer 2025",
+          "sheet": "TsSummer10_maximum",
+          "year": 2025,
+          "season": "summer",
+          "default": true
+        },
+        {
+          "id": "winter",
+          "label": "Winter 2024 maximum",
+          "short_label": "Winter 2024",
+          "sheet": "TsWinter10_maximum",
+          "year": 2024,
+          "season": "winter",
+          "default": false
+        }
+      ]
+    },
+    "terminal_stations": {
+      "url": "https://services-ap1.arcgis.com/idfthKuhr6cmA2QX/ArcGIS/rest/services/VicGrid_Renewable_Energy_Zone_Infrastructure/FeatureServer/50/query?where=1%3D1&outFields=*&outSR=4326&f=geojson",
+      "landing_page": "https://www.vicgrid.com.au/transmission-planning/renewable-energy-zones",
+      "cache_file": "vicgrid_terminal_stations.geojson"
+    },
+    "transmission_lines": {
+      "url": "https://services-ap1.arcgis.com/idfthKuhr6cmA2QX/ArcGIS/rest/services/VicGrid_Renewable_Energy_Zone_Infrastructure/FeatureServer/3/query?where=1%3D1&outFields=*&outSR=4326&f=geojson",
+      "cache_file": "vicgrid_transmission_lines.geojson"
+    },
+    "victoria_boundary": {
+      "url": "https://services-ap1.arcgis.com/idfthKuhr6cmA2QX/ArcGIS/rest/services/VicGrid_Renewable_Energy_Zone_Infrastructure/FeatureServer/13/query?where=1%3D1&outFields=*&outSR=4326&f=geojson",
+      "cache_file": "victoria_boundary.geojson"
+    }
+  },
+  "station_code_aliases": {
+    "KGTS6622": "KGTS",
+    "LY*": "LYPS",
+    "RWTS": "ROTS",
+    "RWTS22": "ROTS",
+    "WOTS22": "WOTS"
+  },
+  "weather_locations": [
+    {
+      "name": "Melbourne Olympic Park",
+      "latitude": -37.8255,
+      "longitude": 144.9816,
+      "label_position": "label-right",
+      "selection_class": "AEMO-supported demand station",
+      "rationale": "One of the main Victorian weather stations used by AEMO's NEM Demand Forecasting System."
+    },
+    {
+      "name": "Melbourne Airport",
+      "latitude": -37.6655,
+      "longitude": 144.8321,
+      "label_position": "label-left",
+      "selection_class": "AEMO-supported demand station",
+      "rationale": "One of the main Victorian weather stations used by AEMO's NEM Demand Forecasting System."
+    }
+  ],
+  "paths": {
+    "cache_dir": "data/cache",
+    "output_dir": "output",
+    "map_html": "victoria_terminal_demand_weather_map.html",
+    "audit_csv": "terminal_station_demand_points.csv",
+    "metadata_json": "map_metadata.json"
+  },
+  "map": {
+    "center": [-36.9, 144.7],
+    "zoom_start": 6,
+    "focus_quantile": 0.8,
+    "focus_include_weather_locations": false,
+    "focus_padding_top_left": [60, 110],
+    "focus_padding_bottom_right": [40, 70],
+    "focus_max_zoom": 10,
+    "selected_driver_count": 7,
+    "driver_label_positions": {
+      "KTS": "label-left",
+      "ROTS": "label-left",
+      "CBTS": "label-right",
+      "RTS": "label-below",
+      "TTS": "label-above",
+      "ERTS": "label-right",
+      "GTS": "label-left"
+    },
+    "marker_min_radius": 3.5,
+    "marker_max_radius": 24,
+    "heat_radius": 38,
+    "heat_blur": 30,
+    "heat_min_opacity": 0.25
+  }
+}
