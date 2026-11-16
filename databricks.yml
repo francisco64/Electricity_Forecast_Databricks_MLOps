@@ -1,0 +1,10 @@
+bundle:
+  name: victoria-demand
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      host: https://dbc-aaa2173f-c5db.cloud.databricks.com
+      profile: AEMO_VIC1
